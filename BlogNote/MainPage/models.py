@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class model_Note(models.Model):
-
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published','Published'),
