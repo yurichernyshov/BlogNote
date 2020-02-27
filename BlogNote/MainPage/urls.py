@@ -15,11 +15,13 @@ Including another URLconf
 """
 
 from django.conf.urls import url, include
-from BlogNote.MainPage.views import view_NotesList, view_NoteDetails, view_Test
+from BlogNote.MainPage.views import view_NotesList, view_NoteDetails, view_InputNote, view_Test
 
 app_name = "BlogNote"
 
 urlpatterns = [
      url(r'([0-9]{4})/([0-9]+)/([0-9]+)/([0-9]{4})', view_NoteDetails, name='note_details'),
+     url('InputNote', view_InputNote, name='input_note'),
+     url('Test', view_Test, name='test'),
      url('', view_NotesList, name='notes_list'),
 ]
