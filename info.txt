@@ -1,0 +1,12 @@
+('1---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '', 'USER': '', 'PASSWORD': '', 'PORT': ''})
+('2---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '', 'USER': '', 'PASSWORD': '', 'PORT': ''})
+('1---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '', 'USER': '', 'PASSWORD': '', 'PORT': ''})
+('2---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '', 'USER': '', 'PASSWORD': '', 'PORT': ''})
+('1---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '127.0.0.1', 'USER': 'django_db', 'PASSWORD': 'django_db', 'PORT': '5432'})
+('2---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '127.0.0.1', 'USER': 'django_db', 'PASSWORD': 'django_db', 'PORT': '5432'})
+('1---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '127.0.0.1', 'USER': 'django_user', 'PASSWORD': 'django_db', 'PORT': '5432'})
+('2---', {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'django_db', 'HOST': '127.0.0.1', 'USER': 'django_user', 'PASSWORD': 'django_db', 'PORT': '5432'})
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
