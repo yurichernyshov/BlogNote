@@ -1,0 +1,1 @@
+web: gunicorn BlogNote.wsgi --log-file -

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Input a note{% endblock %}
+{% block content %}
+{% if saved %}
+  <h1>Thanks!</h1>
+  <p>"{{ note.title }}" was successfully saved.</p>
+{% else %}
+  <h1>Input new note into BlogNote</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+    <input type="submit" value="Save note">
+    </p>
+  </form>
+{% endif %}
+{% endblock %}
