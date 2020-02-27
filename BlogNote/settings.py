@@ -78,20 +78,19 @@ WSGI_APPLICATION = 'BlogNote.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',
+        'HOST': '',
+        'PORT': '',
+        'USER': '',
+        'PASSWORD': '',
+    }
+}
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DATABASES_URL['default'].update(db_from_env)
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'django_db',
-#        'HOST': '127.0.0.1',
-#        'PORT': '5432',
-#        'USER': 'django_user',
-#        'PASSWORD': 'django_password',
-#    }
-#}
 
 
 # Password validation
