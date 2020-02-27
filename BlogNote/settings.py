@@ -27,8 +27,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dm_879u$j(&8&-fqg@ojz$=ta4c@qq
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['https://lit-fortress-67024.herokuapp.com','127.0.0.1']
+# For example: 
+# ALLOWED_HOSTS = ['fathomless-scrubland-30645.herokuapp.com','127.0.0.1']
 
 # Application definition
 
