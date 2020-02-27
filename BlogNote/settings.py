@@ -35,13 +35,13 @@ ALLOWED_HOSTS = ['lit-fortress-67024.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'MainPage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'BlogNote.MainPage',
 ]
 
 MIDDLEWARE = [
