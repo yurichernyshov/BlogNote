@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dm_879u$j(&8&-fqg@ojz$=ta4c@qq
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['lit-fortress-67024.herokuapp.com','127.0.0.1']
 # For example: 
@@ -91,7 +91,6 @@ DATABASES = {
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-print(DATABASES['default'])
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

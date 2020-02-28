@@ -27,7 +27,7 @@ def view_NotesList(request):
     return render(request,'page_NotesList.html', {'page': page, 'notes': notes})
 
 def view_NoteDetails(request, y, m, d, s):
-    note = model_Note.objects.get(slug=s, status='published', publish__year=y, publish__month=m, publish__day=d)
+    note = model_Note.objects.get(slug=s, publish__year=y, publish__month=m, publish__day=d)
     return render(request,'page_NoteDetails.html',{'note': note})
 
 def view_InputNote(request):

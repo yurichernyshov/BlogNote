@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block title %}Input a note{% endblock %}
-{% block content %}
-  <h1>Input new note into BlogNote</h1>
-  <form action="." method="post">
-    {% csrf_token %}
-    {{ pform.as_p }}
-  </form>
-{% endblock %}

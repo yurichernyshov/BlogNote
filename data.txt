@@ -1,0 +1,4 @@
+Operations to perform:
+  Apply all migrations: MainPage, admin, auth, contenttypes, sessions
+Running migrations:
+  Applying MainPage.0002_auto_20200228_1012...
