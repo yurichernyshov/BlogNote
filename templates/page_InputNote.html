@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Новая запись{% endblock %}
+{% block title %}New note input{% endblock %}
 {% block content %}
 {% if saved %}
-  <h1>Спасибо!</h1>
-  <p>Воспоминание "{{ note.title }}" успешно сохранено "{{ note.publish }}".</p>
+  <h1>Thank you!</h1>
+  <p>Note "{{ note.title }}" succsesfully saved at "{{ note.publish }}".</p>
 {% else %}
-  <h1>Запишите новость в BlogNote! Мы поможем Вам не забыть это! :-)</h1>
+  <h1>Write your note here! We will help you to remeber it! :-)</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <p>
-    <input type="submit" value="Запомнить">
+    <input type="submit" value="Save note">
     </p>
   </form>
 {% endif %}
