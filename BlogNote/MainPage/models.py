@@ -24,7 +24,7 @@ class model_Note(models.Model):
         ordering = ('publish',)
 
     def __unicode__(self):
-        return self.title
+        return ("Title: {}", self.title)
 
     def get_absolute_url(self):
         return reverse('MainPage:note_details', args=[self.publish.year,self.publish.month, self.publish.day, self.slug])
