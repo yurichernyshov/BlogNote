@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from numpy.random import choice
+п»їfrom numpy.random import choice
 
 from django.shortcuts import render
 from django.template import loader
@@ -19,15 +16,13 @@ def view_NotesList(request):
     try:
         notes = paginator.page(page)
     except PageNotAnInteger:
-        # Если страница не является целым числом, возвращаем первую страницу.
         notes = paginator.page(1)
     except EmptyPage:
-        # Если номер страницы больше, чем общее количество страниц, возвращаем последнюю.
         notes = paginator.page(paginator.num_pages)
     return render(request,'page_NotesList.html', {'page': page, 'notes': notes})
 
-def view_NoteDetails(request, y, m, d, s):
-    note = model_Note.objects.get(slug=s, publish__year=y, publish__month=m, publish__day=d)
+def view_NoteDetails(request, year, month, day, code):
+    note = model_Note.objects.get(slug=code, publish__year=year, publish__month=month, publish__day=day)
     return render(request,'page_NoteDetails.html',{'note': note})
 
 def view_InputNote(request):
@@ -41,10 +36,10 @@ def view_InputNote(request):
 
             #save new note
             note.title=cd['title']
-            note.slug = str(choice([i for i in range(1,10)])) + \
-                        str(choice([i for i in range(1,10)])) + \
-                        str(choice([i for i in range(1,10)])) + \
-                        str(choice([i for i in range(1,10)]))
+            note.slug = str(choice([i for i in range(10)])) + \
+                        str(choice([i for i in range(10)])) + \
+                        str(choice([i for i in range(10)])) + \
+                        str(choice([i for i in range(10)]))
             note.body=cd['body']
             note.author=User.objects.get(username=cd['author'])
             note.status = cd['status']
@@ -67,5 +62,5 @@ def view_Test(request):
     form.id=1
     print("form:", form.as_p())
     print("form.id:", form.id)
-    return render(request, 'test.html', {'pform': form})
+    return render(request, 'test.html', {'form': form})
 

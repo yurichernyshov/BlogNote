@@ -28,24 +28,23 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dm_879u$j(&8&-fqg@ojz$=ta4c@qq
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 DEBUG = False
 
-ALLOWED_HOSTS = ['lit-fortress-67024.herokuapp.com','127.0.0.1']
-# For example: 
-# ALLOWED_HOSTS = ['fathomless-scrubland-30645.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['ancient-mountain-97905.herokuapp.com','127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'BlogNote.MainPage',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'BlogNote.MainPage',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,20 +76,21 @@ WSGI_APPLICATION = 'BlogNote.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_db',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
         'USER': 'django_user',
         'PASSWORD': 'django_db',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -133,7 +133,6 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )

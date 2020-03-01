@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
+﻿from django.db import models
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -23,7 +21,7 @@ class model_Note(models.Model):
     class Meta:
         ordering = ('publish',)
 
-    def __unicode__(self):
+    def __str__(self):
         return (self.title)
 
     def get_absolute_url(self):
