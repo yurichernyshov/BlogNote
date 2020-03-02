@@ -10,21 +10,23 @@
 
 {% block content %}{% endblock %}
 
-<div id="sidebar">
-    <h2>BlogNote</h2>
+<div id="info">
     <p>
-    What is it? It is a small application - notebook for blogs. 
+    What is BlogNote? It is a small application - notebook for blogs. 
     You can easily write here your ideas, thinkings, new contacts, etc.
     We will carefully save it for you!
     </p>
+</div>
 
+<div id="navigation">
 {% if request.user.is_authenticated %}
-Hello {{ request.user }},
-<a href="{% url "logout" %}">Logout</a>
-{% else %}
-<a href="{% url "login" %}">Log-in</a>
+    <p>
+    Hello {{ request.user }}! 
+    </p>
+    <p>
+    Please see your <a href="{% url "Notes:notes_list" %}">notes</a>! You can logout <a href="{% url "logout" %}">here</a>.
+    </p>
 {% endif %}
-
 </div>
 
 </body>

@@ -11,6 +11,6 @@
 {% endfor %}
 {% include "pagination.html" with page=notes %}
 <p>
- <a href="{% url "MainPage:input_note" %}">Input new note</a>
+ <a href="{% url "Notes:input_note" %}">Input new note</a>
 </p>
 {% endblock %}

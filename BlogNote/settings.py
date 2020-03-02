@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['ancient-mountain-97905.herokuapp.com','127.0.0.1']
 
 INSTALLED_APPS = [
     'BlogNote.Accounts',
-    'BlogNote.MainPage',
+    'BlogNote.Notes',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
