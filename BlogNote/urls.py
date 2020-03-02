@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('BlogNote/', include('BlogNote.MainPage.urls', namespace='MainPage')),
+    path('Accounts/', include('BlogNote.Accounts.urls')),
 ]

@@ -1,5 +1,3 @@
-﻿from numpy.random import choice
-
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
@@ -33,21 +31,21 @@ def view_InputNote(request):
         form = InputNoteForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            #save new note (title, body, status)
+            note=form.save(commit=False)
+            note.slug = cd['title'].replace(' ','').lower() # unique slug name
+            note.author =  request.user
 
-            #save new note
-            note.title=cd['title']
-            note.slug = str(choice([i for i in range(10)])) + \
-                        str(choice([i for i in range(10)])) + \
-                        str(choice([i for i in range(10)])) + \
-                        str(choice([i for i in range(10)]))
-            note.body=cd['body']
-            note.author=User.objects.get(username=cd['author'])
-            note.status = cd['status']
-#            publish = models.DateTimeField(default=timezone.now)
-#            created = models.DateTimeField(auto_now_add=True)
-#            updated = models.DateTimeField(auto_now=True)
+#    title = models.CharField(max_length=200)
+#    slug = models.SlugField(max_length=250, unique_for_date='publish')
+#    author = models.ForeignKey(User, on_delete=models.CASCADE,related_name='note_posts')
+#    body = models.TextField()
+#    publish = models.DateTimeField(default=timezone.now)
+#    created = models.DateTimeField(auto_now_add=True)
+#    updated = models.DateTimeField(auto_now=True)
+#    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
             note.save()
-
             saved = True
             return render(request, 'page_InputNote.html', {'note': note, 'form': form, 'saved': saved})
         else:

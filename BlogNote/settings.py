@@ -24,22 +24,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dm_879u$j(&8&-fqg@ojz$=ta4c@qqat((co(pq2(m*95fnx1u')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-DEBUG = False
+#DEBUG = False
 
 ALLOWED_HOSTS = ['ancient-mountain-97905.herokuapp.com','127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'BlogNote.Accounts',
+    'BlogNote.MainPage',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'BlogNote.MainPage',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,10 @@ DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+LOGIN_REDIRECT_URL = 'MainPage:test'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
