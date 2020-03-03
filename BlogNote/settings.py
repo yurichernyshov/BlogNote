@@ -100,10 +100,17 @@ LOGIN_REDIRECT_URL = 'Notes:test'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-AUTHENTICATION_BACKENDS = ['social_core.backends.facebook.FacebookOAuth2',]
-SOCIAL_AUTH_FACEBOOK_KEY = '2905325446219442' # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'd5edc6a85521e66f0b3cb7af9f989685' # Facebook App Secret
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+AUTHENTICATION_BACKENDS = [
+                           'django.contrib.auth.backends.ModelBackend', 
+                           'social_core.backends.facebook.FacebookOAuth2',
+                          ]
+SOCIAL_AUTH_FACEBOOK_KEY    = '186937896054617' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'deffc29f5f82e45a95574342f0090493' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE  = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email, age_range'
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
