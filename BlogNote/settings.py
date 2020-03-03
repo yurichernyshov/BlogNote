@@ -28,7 +28,7 @@ DEBUG = True
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 #DEBUG = False
 
-ALLOWED_HOSTS = ['ancient-mountain-97905.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['ancient-mountain-97905.herokuapp.com', 'BlogNote.com', '127.0.0.1']
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +100,10 @@ LOGIN_REDIRECT_URL = 'MainPage:test'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
+AUTHENTICATION_BACKENDS = ['social_core.backends.facebook.FacebookOAuth2',]
+SOCIAL_AUTH_FACEBOOK_KEY = '2905325446219442' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd5edc6a85521e66f0b3cb7af9f989685' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 AUTH_PASSWORD_VALIDATORS = [
     {
