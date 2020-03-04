@@ -1,9 +1,6 @@
 ﻿{% extends "base.html" %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v6.0&appId=186937896054617&autoLogAppEvents=1"></script>
-<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
     <h1>Log-in</h1>
     {% if form.errors %}
@@ -21,10 +18,4 @@
         </form>
     </div>
 
-    <div class="social">
-        <ul>
-         <li class="facebook"><a href="{% url "social:begin" "facebook" %}">
-         Signin with Facebook</a></li>
-         </ul>
-    </div>
 {% endblock %}

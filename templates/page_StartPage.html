@@ -2,12 +2,37 @@
 {% block title %}
 BlogNote start page. Welcome!
 {% endblock %}
+
+{% block info %}
+<div id="info">
+{% endblock %}
+
 {% block content %}
+    <p>
+	What is BlogNote? It is a small application - notebook for blogs. 
+	You can easily write here your ideas, thinkings, new contacts, etc.
+	We will carefully save it for you!
+    </p>
+{% endblock %}
 
-What is BlogNote? It is a small application - notebook for blogs. 
-You can easily write here your ideas, thinkings, new contacts, etc.
-We will carefully save it for you!
-
-You can login to BlogNote <a href="{% url "login" %}">HERE</a>!
-
+{% block navigate %}
+	{% if request.user.is_authenticated %}
+                <p>
+		Hello {{ request.user.first_name }}, nice to see you again!
+                </p>
+                <p>
+		You can see you saved notes <a href="{% url "Notes:notes_list" %}"> here </a>.
+                </p>
+                <p>
+		Or you can <a href="{% url "logout" %}"> logout </a>.
+                </p>
+	{% else %}    
+                <p>
+		Please, <a href="{% url "login" %}">log-in</a>.
+                </p>
+                <p>
+		You can also login with your VContacte account:
+	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
+                </p>
+	{% endif %}
 {% endblock %}

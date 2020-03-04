@@ -1,6 +1,11 @@
 ﻿{% extends "base.html" %}
 {% block title %}
+List of your notes.
 {% endblock %}
+
+{% block info %}
+{% endblock %}
+
 {% block content %}
 {% for note in notes %}
  <h2>
@@ -10,7 +15,26 @@
  {{ note.body|truncatewords:30|linebreaks }}
 {% endfor %}
 {% include "pagination.html" with page=notes %}
-<p>
- <a href="{% url "Notes:input_note" %}">Input new note</a>
-</p>
+{% endblock %}
+
+{% block navigate %}
+	{% if request.user.is_authenticated %}
+                <p>
+		Dear {{ request.user.first_name }}, you can see here your memories.
+                </p>
+		<p>
+		 You can easily <a href="{% url "Notes:input_note" %}">input new note</a> if you wish.
+		</p>
+                <p>
+		If you are tired with memories - please <a href="{% url "logout" %}"> logout </a>.
+                </p>
+	{% else %}    
+                <p>
+		Please, <a href="{% url "login" %}">log-in</a>.
+                </p>
+                <p>
+		You can also login with your VContacte account:
+	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
+                </p>
+	{% endif %}
 {% endblock %}

@@ -3,6 +3,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from BlogNote.Notes.models import model_Note
 from BlogNote.Notes.forms import InputNoteForm, TestForm
@@ -10,6 +11,7 @@ from BlogNote.Notes.forms import InputNoteForm, TestForm
 def view_StartPage(request):
     return render(request,'page_StartPage.html')
 
+@login_required
 def view_NotesList(request):
     object_list = model_Note.objects.all()
     paginator = Paginator(object_list, 3) # 3 articles on page

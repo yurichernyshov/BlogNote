@@ -1,7 +1,35 @@
 {% extends "base.html" %}
-{% block title %}{{ note.title }}{% endblock %}
+{% block title %}Note "{{ note.title }}" from {{ note.publish }}. {% endblock %}
+
+{% block info %}
+{% endblock %}
+
 {% block content %}
 <h1>{{ note.title }}</h1>
-<p class="date">Published {{ note.publish }} by {{ note.author }}</p>
+<p class="date">Published at {{ note.publish }} by {{ note.author }}</p>
 {{ note.body|linebreaks }}
 {% endblock %}
+
+{% block navigate %}
+	{% if request.user.is_authenticated %}
+                <p>
+		Dear {{ request.user.first_name }}, 
+		Please remember your note "{{ note.title }}" from {{ note.publish }}.
+                </p>
+                <p>
+		Or you can go back to your notes <a href="{% url "Notes:notes_list" %}"> here </a>.
+                </p>
+                <p>
+		If you are tired with memories - please <a href="{% url "logout" %}"> logout </a>.
+                </p>
+	{% else %}    
+                <p>
+		Please, <a href="{% url "login" %}">log-in</a>.
+                </p>
+                <p>
+		You can also login with your VContacte account:
+	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
+                </p>
+	{% endif %}
+{% endblock %}
+
