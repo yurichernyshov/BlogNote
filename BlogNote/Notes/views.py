@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from BlogNote.Notes.models import model_Note
-from BlogNote.Notes.forms import InputNoteForm, TestForm
+from BlogNote.Notes.forms import InputNoteForm
 
 def view_StartPage(request):
     return render(request,'page_StartPage.html')
@@ -30,26 +30,16 @@ def view_NoteDetails(request, year, month, day, code):
 
 def view_InputNote(request):
     note = model_Note()
-
     saved = False
     if request.method == 'POST':
         form = InputNoteForm(request.POST)
+        print("form1:", form)
         if form.is_valid():
+            print("form2:", form)
             cd = form.cleaned_data
-            #save new note (title, body, status)
-            note=form.save(commit=False)
-            note.slug = cd['title'].replace(' ','').lower() # unique slug name
+            note = form.save(commit=False)
+            note.slug = cd['title'].replace(' ','').lower()
             note.author =  request.user
-
-#    title = models.CharField(max_length=200)
-#    slug = models.SlugField(max_length=250, unique_for_date='publish')
-#    author = models.ForeignKey(User, on_delete=models.CASCADE,related_name='note_posts')
-#    body = models.TextField()
-#    publish = models.DateTimeField(default=timezone.now)
-#    created = models.DateTimeField(auto_now_add=True)
-#    updated = models.DateTimeField(auto_now=True)
-#    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-
             note.save()
             saved = True
             return render(request, 'page_InputNote.html', {'note': note, 'form': form, 'saved': saved})
@@ -59,11 +49,4 @@ def view_InputNote(request):
     else:
         form = InputNoteForm()
         return render(request, 'page_InputNote.html', {'note': note, 'form': form, 'saved': saved})
-
-def view_Test(request):
-    form = TestForm(initial={'id': 1})
-    form.id=1
-    print("form:", form.as_p())
-    print("form.id:", form.id)
-    return render(request, 'test.html', {'form': form})
 

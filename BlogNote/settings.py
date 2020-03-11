@@ -20,17 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'n$(tmt$-jdtm&q#foda7!@e-5_b$g5fo+m&%zuz!huajve&c(u')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-
-ALLOWED_HOSTS = ['BlogNote.com', '127.0.0.1', 'localhost',]
+DEBUG = bool(os.environ.get('DJANGO_DEBUG'))
+ALLOWED_HOSTS = ['BlogNote.com', 'blognote.herokuapp.com', '127.0.0.1', 'localhost',]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'BlogNote.Accounts',
     'BlogNote.Notes',
@@ -94,8 +91,8 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-#SOCIAL_AUTH_POSTGRES_JSONFIELD = True
-
+# Secutiry
+CSRF_COOKIE_SECURE = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -104,13 +101,13 @@ LOGIN_REDIRECT_URL = 'Notes:notes_list'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'Notes:start_page'
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '7343703'                 #add
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'WL3YfoCMqZbL6qJXIFE5' #add
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('VK_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('VK_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 AUTHENTICATION_BACKENDS = [
-                           'social_core.backends.vk.VKOAuth2', #add
-                           'django.contrib.auth.backends.ModelBackend',  #add
+                           'social_core.backends.vk.VKOAuth2',
+                           'django.contrib.auth.backends.ModelBackend',
                           ]
 
 AUTH_PASSWORD_VALIDATORS = [

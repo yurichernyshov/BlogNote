@@ -1,43 +1,32 @@
 ﻿{% extends "base.html" %}
-{% block title %}New note input{% endblock %}
+{% block title %} Input new note {% endblock %}
 
-{% block info %}
-{% endblock %}
+{% block info %}{% endblock %}
 
 {% block content %}
 	{% if saved %}
 	  <h1>Thank you!</h1>
-	  <p>Note "{{ note.title }}" succsesfully saved at "{{ note.publish }}".</p>
+	  <p>Note "{{ note.title }}" was succsesfully saved at "{{ note.publish }}".</p>
 	{% else %}
-	  <h1>Write your note here! We will help you to remeber it! :-)</h1>
+	  <h1>Input new note</h1>
+	  <p>Please write your note here! We will help you to remeber it! :-)</p>
 	  <form method="post">
 	    {% csrf_token %}
 	    {{ form.as_p }}
-	    <p>
+            <p>You can mark place for this note:</p>
+            <div id="map" style="width: 400px; height: 200px"></div>
 	    <input type="submit" value="Save note">
-	    </p>
 	  </form>
 	{% endif %}
 {% endblock %}
 
 {% block navigate %}
 	{% if request.user.is_authenticated %}
-                <p>
-		Dear {{ request.user.first_name }}, you can simply add your new note here!
-                </p>
-                <p>
-		Or you can go back to your notes <a href="{% url "Notes:notes_list" %}"> here </a>.
-                </p>
-                <p>
-		If you are tired with memories - please <a href="{% url "logout" %}"> logout </a>.
-                </p>
+                <p>Dear {{ request.user.first_name }}, you can simply add your new note here!</p>
+                <p>Or you can go back to your notes <a href="{% url "Notes:notes_list" %}"> here </a>.</p>
+                <p>If you are tired with memories - please <a href="{% url "logout" %}"> logout </a>.</p>
 	{% else %}    
-                <p>
-		Please, <a href="{% url "login" %}">log-in</a>.
-                </p>
-                <p>
-		You can also login with your VContacte account:
-	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
-                </p>
+                <p>Please, <a href="{% url "login" %}">log-in</a>. </p>
+                <p>You can also login with your VContacte account:<a href="{% url "social:begin" "vk-oauth2" %}"> here</a>.</p>
 	{% endif %}
 {% endblock %}
