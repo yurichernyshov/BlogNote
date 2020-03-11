@@ -8,7 +8,7 @@
     <h1>{{ note.title }}</h1>
     <p class="date">Published at {{ note.publish }} by {{ note.author }}</p>
     {{ note.body|linebreaks }}
-    It was happened here: {{note.latitude}}, {{note.longtitude}}, {{note.zoom}}
+    It was happened here:
     <div id="map" style="width: 400px; height: 200px" latitude={{ note.latitude }} longtitude={{ note.longtitude }} zoom={{ note.zoom }}>
     </div>
 {% endblock %}

@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('BlogNote/', include('BlogNote.Notes.urls', namespace='Notes')),
-    path('Accounts/', include('BlogNote.Accounts.urls')),
+    path('admin/',       admin.site.urls),
+    path('',             include('BlogNote.Notes.urls', namespace='Notes')),
+    path('Accounts/',    include('BlogNote.Accounts.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
 ]
