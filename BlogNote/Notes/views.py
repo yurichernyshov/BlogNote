@@ -13,8 +13,13 @@ def view_StartPage(request):
 
 @login_required
 def view_NotesList(request):
-    object_list = model_Note.objects.all()
-    paginator = Paginator(object_list, 3) # 3 articles on page
+    objects_all = model_Note.objects.all()
+    objects_list = []
+    for obj in objects_all:
+        if(obj.author==request.user) or (obj.status=="public"):
+            objects_list.append(obj)
+
+    paginator = Paginator(objects_list, 3) # 3 articles on page
     page = request.GET.get('page')
     try:
         notes = paginator.page(page)
