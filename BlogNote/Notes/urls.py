@@ -23,7 +23,7 @@ urlpatterns = [
      path('InputNote',                                     view_InputNote,   name='input_note'),
      path('NotesList',                                     view_NotesList,   name='notes_list'),
      path('',                                              view_StartPage,   name='start_page'),
-     path('/BlogNote',                                     view_StartPage,   name='start_page'),
+     path('BlogNote',                                     view_StartPage,   name='start_page'),
 ]
 
 
