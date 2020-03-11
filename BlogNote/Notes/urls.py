@@ -22,6 +22,7 @@ urlpatterns = [
      path(r'<int:year>/<int:month>/<int:day>/<slug:code>', view_NoteDetails, name='note_details'),
      path('InputNote',                                     view_InputNote,   name='input_note'),
      path('NotesList',                                     view_NotesList,   name='notes_list'),
+     path('',                                              view_StartPage,   name='start_page'),
      path('/BlogNote',                                     view_StartPage,   name='start_page'),
 ]
 
