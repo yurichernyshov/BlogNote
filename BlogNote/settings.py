@@ -26,7 +26,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = bool(os.environ.get('DJANGO_DEBUG'))
 ALLOWED_HOSTS = ['BlogNote.com', 'blognote.herokuapp.com', '127.0.0.1', 'localhost',]
 
-
 # Application definition
 INSTALLED_APPS = [
     'BlogNote.Accounts',
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
