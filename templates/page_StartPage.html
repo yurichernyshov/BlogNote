@@ -31,8 +31,18 @@ BlogNote start page. Welcome!
 		Please, <a href="{% url "login" %}">log-in</a>.
                 </p>
                 <p>
-		You can also login with your VContacte account:
+		You can also login with your account from VK social network (vk.com):
 	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
+                </p>
+                <p>
+		For your convinience and just for testing purposes we've created test account.
+                login: test, password: test.
+                If you don't want to use your account - please try the test one.
+                Be carefull that all notes from test account can be deleted without any notofocation.
+                </p>
+                <p>
+		If occasionally you still don't have you own account on BlogNote -
+                please don't hesitate to create one <a href="{% url "register" %}">here</a>.
                 </p>
 	{% endif %}
 {% endblock %}

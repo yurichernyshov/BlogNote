@@ -16,8 +16,8 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from BlogNote.Accounts.views import register
 from BlogNote.Notes.views import view_NotesList
+from BlogNote.Accounts.views import view_Register
 
 urlpatterns = [
     path(r'login/',                auth_views.LoginView.as_view(),              name='login'),
@@ -25,7 +25,7 @@ urlpatterns = [
     path(r'password_change/',      auth_views.PasswordChangeView.as_view(),     name='password_change'),
     path(r'password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     path(r'password_change/',      auth_views.PasswordChangeView.as_view(),     name='password_change'),
-    path(r'register/',             register,                                    name='register'),
+    path(r'register/',             view_Register,                               name='register'),
     path('',                       view_NotesList,                              name='notes_list'),
 ]
 

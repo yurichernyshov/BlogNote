@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from BlogNote.Accounts.forms import UserRegistrationForm
 
-def register(request):
+def view_Register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
