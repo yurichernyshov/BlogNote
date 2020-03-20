@@ -90,8 +90,8 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-# Secutiry
-CSRF_COOKIE_SECURE = True
+# Security
+# CSRF_COOKIE_SECURE = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
