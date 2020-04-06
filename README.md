@@ -1,2 +1,2 @@
 # BlogNote
-BlogNote is service which helps to save memories
+BlogNote is a service which helps to save memories
