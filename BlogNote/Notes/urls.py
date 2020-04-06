@@ -13,8 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
-from BlogNote.Notes.views import view_StartPage, view_NotesList, view_NoteDetails, view_InputNote
+from django.urls import path
+from .views import view_StartPage, view_NotesList, view_NoteDetails, view_InputNote, NoteAPIView
 
 app_name = "BlogNote"
 
@@ -23,7 +23,8 @@ urlpatterns = [
      path('InputNote',                                     view_InputNote,   name='input_note'),
      path('NotesList',                                     view_NotesList,   name='notes_list'),
      path('',                                              view_StartPage,   name='start_page'),
-     path('BlogNote',                                      view_StartPage,   name='start_page'),
+     path('api', NoteAPIView.as_view()),
+     path('api/<int:year>/<int:month>/<int:day>/<slug:code>', NoteAPIView.as_view()),
 ]
 
 

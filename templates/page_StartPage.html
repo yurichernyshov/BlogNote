@@ -4,7 +4,7 @@ BlogNote start page. Welcome!
 {% endblock %}
 
 {% block info %}
-<div id="info">
+<div id="info"></div>>
 {% endblock %}
 
 {% block content %}
@@ -24,34 +24,25 @@ BlogNote start page. Welcome!
 {% block navigate %}
 	{% if request.user.is_authenticated %}
                 <p>
-		Hello {{ request.user.first_name }}, nice to see you again!
+		        Hello {{ request.user.first_name }}, nice to see you again!
                 </p>
                 <p>
-		You can see you saved notes <a href="{% url "Notes:notes_list" %}"> here </a>.
+		        You can see you saved notes <a href="{% url "Notes:notes_list" %}"> here </a>.
                 </p>
                 <p>
-		Or you can <a href="{% url "logout" %}"> logout </a>.
+		        Or you can <a href="{% url "logout" %}"> logout </a>.
                 </p>
 	{% else %}    
                 <p>
-		Please, <a href="{% url "login" %}">log-in</a>.
+                    Please, <a href="{% url "login" %}">log-in</a> (for testing only - login: <b>test</b>, password: <b>t1e2s3t4</b>.).
                 </p>
                 <p>
-		You can also login with your account from VK social network (vk.com):
-	        <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
+		        You can also login with your account from VK social network (vk.com):
+	            <a href="{% url "social:begin" "vk-oauth2" %}"> here </a>.
                 </p>
                 <p>
-		If occasionally you still don't have you own account on BlogNote -
+		        If occasionally you still don't have you own account on BlogNote -
                 please don't hesitate to create one <a href="{% url "register" %}">here</a>.
-                </p>
-                <p>
-                <i>
-		For your convinience and just for testing purposes we've created test account.
-                login: test, password: t1e2s3t4.
-                If you don't want to create your account or use profile data from social network VK
-                - you can use this test account to familiarize with the BlogNote.
-                Be carefull that all notes from test account can be deleted without any notification.
-                </i>
                 </p>
 	{% endif %}
 {% endblock %}

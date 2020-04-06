@@ -17,7 +17,7 @@
 	{% if request.user.is_authenticated %}
                 <p>
 		Dear {{ request.user.first_name }}, 
-		Please remember your note "{{ note.title }}" from {{ note.publish }}.
+		Please remember note "{{ note.title }}" from {{ note.publish }}.
                 </p>
                 <p>
 		Or you can go back to your notes <a href="{% url "Notes:notes_list" %}"> here </a>.
