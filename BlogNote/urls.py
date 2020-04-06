@@ -18,7 +18,8 @@ from django.urls import path, re_path, include
 
 urlpatterns = [
     path('admin/',       admin.site.urls),
-    re_path(r'blognote/|',    include('BlogNote.Notes.urls', namespace='Notes')),
     path('accounts/',    include('BlogNote.Accounts.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
+    path('', include('BlogNote.Notes.urls', namespace='Notes')),
+    path('blognote/', include('BlogNote.Notes.urls', namespace='Notes')),
 ]
